@@ -1,0 +1,272 @@
+.main {
+  min-width: 75%;
+  max-width: 75%;
+  margin: 0 auto;
+  left: -10%;
+  /*right: 0;*/
+  border-radius: 60px;
+  position: absolute;
+  top: 15vh;
+  height: 70vh;
+}
+
+.contenuto {
+  position: relative;
+}
+
+.title {
+  margin-top: 50px;
+  text-align: center;
+  font-size: var(--font-size-xxxxl);
+  font-weight: 800;
+  font-family: var(--font-family-franklin);
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.title span {
+  color: var(--white);
+}
+
+.testo {
+  padding-top: 20px;
+  text-align: center;
+  font-size: var(--font-size-medium-variant);
+  font-family: var(--font-family-franklin);
+}
+
+.subtitle {
+  padding-top: 40px;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  font-family: var(--font-family-franklin);
+  color: var(--red-background-dis);
+}
+
+.accesso {
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.button-container {
+  display: flex;
+  width: 65%;
+  margin: 0 auto;
+}
+
+.input_label {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  height: 50px;
+  padding-left: 2%;
+  border: solid 2px #ccc;
+  border-radius: 90px;
+  font-size: var(--font-size-medium);
+}
+
+.input_button {
+  display: block;
+  margin: 20px auto 20px auto;
+  width: 95%;
+  height: 50px;
+  background-color: var(--red-background);
+  border: var(--red-background-dis);
+  color: var(--white);
+  font-size: var(--font-size-medium);
+  border-radius: 90px;
+}
+
+.input_button:disabled {
+  opacity: 0.59;
+}
+
+.info-icon {
+  text-align: left;
+  margin: 33px auto 33px 1%;
+  width: 2%;
+  font-size: 24px;
+}
+
+/*TOOLTIP*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 200px;
+  background-color: var(--background);
+  color: var(--white);
+  font-family: var(--font-family-franklin);
+  font-size: var(--font-size-small);
+  font-weight: 100;
+  border: 1px solid black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+#mess2 {
+  display: none;
+  position: fixed;
+  top: 45%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: white;
+  opacity: 1;
+  width: 700px;
+  height: auto;
+  z-index: 11;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-size: var(--font-size-medium-variant);
+  font-family: var(--font-family-franklin);
+}
+
+#cod {
+  margin-top: 30px;
+}
+
+@media only screen and (max-width: 1340px) {
+  .accesso {
+    width: 800px
+  }
+}
+
+@media only screen and (max-width: 1180px) {
+  .main {
+    right: 0;
+    left: 0;
+    min-width: 85%;
+    max-width: 85%;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .accesso {
+    width: 600px;
+  }
+}
+
+@media only screen and (max-width: 715px) {
+  .main {
+    top: 8vh;
+  }
+
+  #mess2 {
+    width: 90%;
+  }
+
+  .main {
+    min-width: 95%;
+    max-width: 95%;
+  }
+
+  .title {
+    font-size: var(--font-size-xxl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-medium-variant);
+  }
+
+  .testo {
+    font-size: var(--font-size-medium);
+  }
+
+  .input_label {
+    /*width: 60%;*/
+    font-size: var(--font-size-medium);
+  }
+
+  .input_button {
+    /*width: 62%;*/
+    /*height: 50px;*/
+    font-size: var(--font-size-medium);
+  }
+}
+
+@media only screen and (max-width: 630px) {
+  .accesso {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 535px) {
+  .title {
+    line-height: 110%;
+  }
+
+  .subtitle {
+    font-size: var(--font-size-medium);
+  }
+
+  .testo {
+    font-size: var(--font-size-small);
+  }
+
+  .input_button {
+    font-size: var(--font-size-small);
+    width: 97%;
+  }
+
+  .accesso {
+    width: 100%;
+  }
+
+  .button-container {
+    display: flex;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .info-icon {
+    text-align: left;
+    margin: 33px auto 33px 1%;
+    width: 3%;
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 335px) {
+  .subtitle {
+    font-size: var(--font-size-small);
+  }
+
+  .testo {
+    font-size: var(--font-size-xs);
+  }
+}

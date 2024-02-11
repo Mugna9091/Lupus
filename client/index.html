@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<!-- Title -->
+	<title>Lupus in Fabula</title>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="Description" content="Distributore carte Lupus">
+	<meta name="author" content="Lorenzo Mugnai">
+	<meta name="Keywords" content="Gioca a Lupus">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1.0">
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<link href="fontawesome/css/all.css" rel="stylesheet">
+	<link rel="icon" href="image/logo.ico">
+	<!-- SCRIPT -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+					integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+					crossorigin="anonymous"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+      $(document).ready(function () {
+          $(".toggle-menu").on("click", function () {
+              $(this).toggleClass("on");
+              $(".menu-bar").toggleClass("menu-mobile");
+              return false;
+          });
+      });
+	</script>
+</head>
+<body onload="start()">
+<div id="mess3" class="message">
+</div>
+<div id="mess2">
+	<input class="label input_label" onchange="controlOnChangePrivate()" id="cod" autocomplete="off" title="codice"
+		   placeholder="Codice partita"/>
+	<input class="button input_button" type="button" onclick="startPrivate()" id="giocaPrivato_1"
+		   value="Unisciti"/>
+</div>
+<nav class="navbar">
+	<div class="container-nav-bar">
+		<ul id="menu-primary">
+			<img id="logo" class="image">
+		</ul>
+		<ul id="menu-secondary">
+			<li><a href="./index.html" title="Home">Home</a></li>
+			<li><a href="./regole.html" title="Regolamento">Regolamento</a></li>
+		</ul>
+		<a href="./#" class="toggle-menu"><span></span></a>
+	</div>
+</nav>
+<div class="main">
+	<div class="contenuto">
+		<div class="title">Inizia <span>subito</span> a <span>giocare</span></div>
+		<div class="subtitle">Effettua l'accesso e potrai iniziare a giocare</div>
+		<div class="accesso">
+			<form id="form-accesso">
+				<div class="button-container">
+					<div class="info-icon"></div>
+					<input class="label input_label" onchange="control()" id="username" autocomplete="off" title="username"
+								 placeholder="Nome Utente"/>
+					<div class="info-icon">
+					</div>
+				</div>
+				<div class="button-container">
+					<div class="info-icon"></div>
+					<input class="button input_button" type="button" onclick="startPublic()"
+								 value="Crea una parita" id="gioca"/>
+				</div>
+				<div class="button-container">
+					<div class="info-icon"></div>
+					<input class="button input_button" type="button" onclick="controlPrivate()" id="giocaPrivato"
+								 value="Unisciti ad una partita"/>
+				</div>
+			</form>
+		</div>
+		<script src="javascript/javascript.js"></script>
+	</div>
+</div>
+</body>
+</html>
