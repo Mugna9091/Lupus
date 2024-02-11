@@ -30,6 +30,8 @@ io.on('connection', (sock) => {
             for (const [key, value] of Object.entries(user_list[cod][i])) {
                 if (parseInt(key) === parseInt(id)) {
                     b = true;
+                    let u_app = [user, sock]
+                    user_list[cod][i][key] = u_app
                 }
             }
         }
@@ -53,7 +55,6 @@ io.on('connection', (sock) => {
         }
     });
     sock.on('start', (cod, carte) => {
-        console.log(carte)
         for (let i = 0; i < user_list[cod].length; i++) {
             for (const [key, value] of Object.entries(user_list[cod][i])) {
                 let random = Math.floor(Math.random() * (carte.length));

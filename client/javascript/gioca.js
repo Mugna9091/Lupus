@@ -66,7 +66,6 @@ const addUserListener = () => {
     sock.on('user_list', (user, num) => {
         n_player = num
         document.getElementById("user").innerHTML = user;
-        console.log(n_player)
         if (n_player >= 2) {
             document.getElementById("start").disabled = false;
         } else {
