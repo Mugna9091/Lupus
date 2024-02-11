@@ -16,7 +16,7 @@
     padding-top: 50px;
     padding-bottom: 20px;
     border-radius: 25px;
-    height: 80%;
+    min-height: 80%;
     /*text-align: center;*/
 }
 
@@ -47,6 +47,7 @@
 
 .line {
     color: #867935;
+    font-size: var(--font-size-medium);
     width: 100%;
     display: flex;
     text-align: center;
@@ -67,8 +68,11 @@
 }
 
 .first-user {
-    text-align: center;
-    width: 100%;
+    text-align: left;
+    width: 80%;
+    border-bottom: #867935;
+    border-bottom-style: solid;
+    border-bottom-width: 0.1px;
 }
 
 .user {
@@ -81,8 +85,12 @@
 }
 
 .user_list {
-    text-align: center;
+    text-align: left;
     width: 100%;
+    border-bottom: #867935;
+    border-bottom-style: solid;
+    border-bottom-width: 0.1px;
+    background: linear-gradient(#262f43, #2f3851);
 }
 
 .carta {
@@ -98,6 +106,11 @@
 .carta-img {
     height: 600px;
     transition: visibility 0s, opacity 0.5s linear;
+}
+
+#user {
+    font-size: var(--font-size-medium);
+    width: 80%;
 }
 
 #lupo {
@@ -120,3 +133,56 @@
 #contadino {
     display: none;
 }
+
+.start_button {
+    display: block;
+    margin: 20px auto 20px auto;
+    width: 95%;
+    height: 50px;
+    background-color: var(--red-background);
+    border: var(--red-background-dis);
+    color: var(--white);
+    font-size: var(--font-size-medium);
+    border-radius: 90px;
+}
+
+.start_button:disabled {
+    opacity: 0.59;
+}
+
+@media only screen and (max-width: 800px) {
+    .title-gioca {
+        font-size: var(--font-size-xl);
+        font-weight: 800;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .main-gioca {
+        min-width: 95%;
+        max-width: 95%;
+    }
+
+    .content-gioca {
+        margin: 20px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .carta-img {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .title-gioca {
+        font-size: var(--font-size-medium);
+        font-weight: 800;
+    }
+}
+
+/*@media only screen and (max-width: 320px) {*/
+/*    .carta-img {*/
+/*        height: 300px;*/
+/*    }*/
+/*}*/

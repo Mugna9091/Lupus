@@ -35,14 +35,14 @@ io.on('connection', (sock) => {
     sock.on('private', (user, cod, id) => {
         try {
             add_user(user, cod, id, sock)
-        }catch (error) {
+        } catch (error) {
             user_list[cod] = [];
             let u = {}
             let u_app = [user, sock]
             u[id] = u_app
             user_list[cod].push(u);
             let user_value = ""
-            let s = "<div class='user_list'>" + user_list[cod][0][id][0] + "</div>"
+            let s = "<div class='user_list'>" + (1) + "." + user_list[cod][0][id][0] + "</div>"
             user_value = user_value + s
             sock.emit("user_list", user_value, user_list[cod].length)
         }
@@ -55,6 +55,7 @@ io.on('connection', (sock) => {
                 carte.splice(random, 1);
             }
         }
+        user_list[cod] = undefined;
     });
 });
 
@@ -87,7 +88,7 @@ function add_user(user, cod, id, sock) {
     let user_value = []
     for (let i = 0; i < user_list[cod].length; i++) {
         for (const [key, value] of Object.entries(user_list[cod][i])) {
-            let s = "<div class='user_list'>" + value[0] + "</div>"
+            let s = "<div class='user_list'>" + (i + 1) + ".  " + value[0] + "</div>"
             user_value = user_value + s
         }
     }
