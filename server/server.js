@@ -14,45 +14,22 @@ let user_list = {}
 
 io.on('connection', (sock) => {
     sock.on('public', (user, cod, id) => {
-        user_list[cod] = [];
-        let u = {}
-        let u_app = [user, sock]
-        u[id] = u_app
-        user_list[cod].push(u);
-        let user_value = ""
-        let s = "<div class='user_list'>" + user_list[cod][0][id][0] + "</div>"
-        user_value = user_value + s
-        sock.emit("user_list", user_value,user_list[cod].length)
-    });
-    sock.on('private', (user, cod, id) => {
-        let b = false;
-        for (let i = 0; i < user_list[cod].length; i++) {
-            for (const [key, value] of Object.entries(user_list[cod][i])) {
-                if (parseInt(key) === parseInt(id)) {
-                    b = true;
-                    let u_app = [user, sock]
-                    user_list[cod][i][key] = u_app
-                }
-            }
-        }
-        if (b === false) {
+        if(!user_list[cod]){
+            user_list[cod] = [];
             let u = {}
             let u_app = [user, sock]
             u[id] = u_app
             user_list[cod].push(u);
+            let user_value = ""
+            let s = "<div class='user_list'>" + user_list[cod][0][id][0] + "</div>"
+            user_value = user_value + s
+            sock.emit("user_list", user_value,user_list[cod].length)
+        }else{
+            add_user(user, cod, id, sock)
         }
-        let user_value = []
-        for (let i = 0; i < user_list[cod].length; i++) {
-            for (const [key, value] of Object.entries(user_list[cod][i])) {
-                let s = "<div class='user_list'>" + value[0] + "</div>"
-                user_value = user_value + s
-            }
-        }
-        for (let i = 0; i < user_list[cod].length; i++) {
-            for (const [key, value] of Object.entries(user_list[cod][i])) {
-                value[1].emit("user_list", user_value,user_list[cod].length)
-            }
-        }
+    });
+    sock.on('private', (user, cod, id) => {
+        add_user(user, cod, id, sock)
     });
     sock.on('start', (cod, carte) => {
         for (let i = 0; i < user_list[cod].length; i++) {
@@ -72,3 +49,35 @@ server.on('error', (err) => {
 server.listen(PORT, () => {
     console.log('RPS started on port ' + PORT);
 });
+
+function add_user(user, cod, id, sock){
+    let b = false;
+    let u_app
+    for (let i = 0; i < user_list[cod].length; i++) {
+        for (const [key, value] of Object.entries(user_list[cod][i])) {
+            if (parseInt(key) === parseInt(id)) {
+                b = true;
+                u_app = [user, sock]
+                user_list[cod][i][key] = u_app
+            }
+        }
+    }
+    if (b === false) {
+        let u = {}
+        u_app = [user, sock]
+        u[id] = u_app
+        user_list[cod].push(u);
+    }
+    let user_value = []
+    for (let i = 0; i < user_list[cod].length; i++) {
+        for (const [key, value] of Object.entries(user_list[cod][i])) {
+            let s = "<div class='user_list'>" + value[0] + "</div>"
+            user_value = user_value + s
+        }
+    }
+    for (let i = 0; i < user_list[cod].length; i++) {
+        for (const [key, value] of Object.entries(user_list[cod][i])) {
+            value[1].emit("user_list", user_value,user_list[cod].length)
+        }
+    }
+}
