@@ -14,6 +14,8 @@ let user_list = {}
 
 io.on('connection', (sock) => {
     sock.on('public', (user, cod, id) => {
+        try {
+            nonExistentFunction();
         if(!user_list[cod]){
             user_list[cod] = [];
             let u = {}
@@ -26,6 +28,9 @@ io.on('connection', (sock) => {
             sock.emit("user_list", user_value,user_list[cod].length)
         }else{
             add_user(user, cod, id, sock)
+        }
+        } catch (error) {
+            console.error(error);
         }
     });
     sock.on('private', (user, cod, id) => {
